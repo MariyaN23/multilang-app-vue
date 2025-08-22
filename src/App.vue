@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { computed } from "vue";
+import Select from 'primevue/select';
 
 const {t, locale, availableLocales } = useI18n({
   locale: 'en',
@@ -33,9 +34,7 @@ const msg = computed(() => t('msg'))
 
 <template>
   <div>
-    <select v-model="locale">
-      <option v-for="loc in availableLocales" :key="`locale-${loc}`" :value="loc">{{ loc }}</option>
-    </select>
+    <Select v-model="locale" :options="availableLocales" />
   </div>
   <div>
     <p>{{ t('named', {msg}) }}</p>
